@@ -125,7 +125,7 @@ check_v2ray_remote_version() {
         exit 1
     fi
     v2ray_remote_version=$(grep tag_name "$v2ray_temp_file" | awk -F "tag_name" '{printf $2}' | awk -F "," '{printf $1}' | awk -F '"' '{printf $3}')
-    v2ray_url="https://github.com/v2fly/v2ray-core/releases/download/$v2ray_remote_version/v2ray-linux-$v2ray_arch.zip"
+    v2ray_url="https://gh-proxy.com/github.com/v2fly/v2ray-core/releases/download/$v2ray_remote_version/v2ray-linux-$v2ray_arch.zip"
     rm -f "$v2ray_temp_file"
 }
 check_xray_local_version() {
@@ -142,7 +142,7 @@ check_xray_remote_version() {
         exit 1
     fi
     xray_remote_version=$(grep tag_name "$xray_temp_file" | awk -F "tag_name" '{printf $2}' | awk -F "," '{printf $1}' | awk -F '"' '{printf $3}')
-    xray_url="https://github.com/XTLS/Xray-core/releases/download/$xray_remote_version/Xray-linux-$v2ray_arch.zip"
+    xray_url="https://gh-proxy.com/github.com/XTLS/Xray-core/releases/download/$xray_remote_version/Xray-linux-$v2ray_arch.zip"
     rm -f "$xray_temp_file"
 }
 check_v2raya_local_version() {
@@ -160,7 +160,7 @@ check_v2raya_remote_version() {
     fi
     v2raya_remote_version=$(grep tag_name "$v2raya_temp_file"| awk -F "tag_name" '{printf $2}' | awk -F "," '{printf $1}' | awk -F '"' '{printf $3}')
     v2raya_short_version=$(echo "$v2raya_remote_version" | cut -d "v" -f2)
-    v2raya_url="https://github.com/v2rayA/v2rayA/releases/download/${v2raya_remote_version}/v2raya_linux_${v2raya_arch}_${v2raya_short_version}"
+    v2raya_url="https://gh-proxy.com/github.com/v2rayA/v2rayA/releases/download/${v2raya_remote_version}/v2raya_linux_${v2raya_arch}_${v2raya_short_version}"
     rm -f "$v2raya_temp_file"
 }
 
@@ -269,7 +269,7 @@ download_v2raya() {
         exit 1
     fi
     if command -v systemctl >/dev/null 2>&1; then
-        service_file_url="https://github.com/v2rayA/v2rayA-installer/raw/main/systemd/v2raya.service"
+        service_file_url="https://gh-proxy.com/github.com/v2rayA/v2rayA-installer/raw/main/systemd/v2raya.service"
         echo "${GREEN}Downloading v2rayA service file${RESET}"
         echo "${GREEN}Downloading from $service_file_url${RESET}"
         if ! curl -L -H "Cache-Control: no-cache" -o "$v2raya_temp_file".service -# "$service_file_url"; then
@@ -278,7 +278,7 @@ download_v2raya() {
         fi
     fi
     if command -v rc-service >/dev/null 2>&1; then
-        service_script_url="https://github.com/v2rayA/v2rayA-installer/raw/main/openrc/v2raya"
+        service_script_url="https://gh-proxy.com/github.com/v2rayA/v2rayA-installer/raw/main/openrc/v2raya"
         echo "${GREEN}Downloading v2rayA service file${RESET}"
         echo "${GREEN}Downloading from $service_script_url${RESET}"
         if ! curl -L -H "Cache-Control: no-cache" -o "$v2raya_temp_file"-openrc -s "$service_script_url"; then
